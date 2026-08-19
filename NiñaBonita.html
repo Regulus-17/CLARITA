@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos 💜</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #7b1fa2;
+            padding: 15px 0;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-container {
+            padding: 50px 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .card h2 {
+            color: #7b1fa2;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilos de botones de las cartas */
+        .card-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .nav-btn {
+            background-color: #7b1fa2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #4a148c;
+        }
+
+        .nav-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .carta-texto {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 20px 0;
+            min-height: 120px;
+        }
+
+        /* Estilos para la cuadrícula */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mensaje-card {
+            background-color: #fff;
+            padding: 25px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mensaje-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(123, 31, 162, 0.3);
+        }
+
+        .texto-espanol {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #4a148c;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .texto-coreano {
+            font-size: 1.1em;
+            color: #7b1fa2;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1.4;
+            border-top: 1px solid #e1bee7;
+            padding-top: 15px;
+        }
+
+        .texto-autor {
+            font-size: 1em;
+            font-weight: bold;
+            color: #9c27b0;
+            text-align: right;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Botón para volver */
+        .back-button {
+            background-color: #7b1fa2;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 40px auto;
+            display: block;
+            width: fit-content;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #4a148c;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #7b1fa2;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="menu-body">
+    <!-- Música de fondo (Dynamite) -->
+    <audio id="bg-music" autoplay loop>
+        <source src="videos/DYNAMITE.mp4" type="audio/mp4">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="menu.html">Inicio</a></li>
+                <li><a href="NiñaBonita.html">Mensajes Especiales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="grid-container" id="grid-mensajes">
+            <!-- Los mensajes se insertarán aquí con JavaScript -->
+        </div>
+
+        <a href="menu.html" class="back-button">🏠 Volver al inicio</a>
+
+        <footer>
+            Hecho con 💜 para Clarita
+        </footer>
+    </main>
+
+    <script>
+        const mensajes = [
+            { es: "¡Feliz Cumpleaños Clarita! Que este día sea tan brillante y hermoso como tu sonrisa. 💜", ko: "생일 축하해 클라리타! 오늘이 너의 미소만큼 밝고 아름답기를 바라. 💜" },
+            { es: "Nunca dejes de soñar. Eres capaz de lograr cosas increíbles si crees en ti misma. 🌟", ko: "절대 꿈을 포기하지 마. 네 자신을 믿는다면 놀라운 일들을 해낼 수 있어. 🌟" },
+            { es: "Cada nuevo día es una página en blanco. Escribe hoy el mejor capítulo de tu vida. ✨", ko: "새로운 매일은 백지와 같아. 오늘 네 인생의 최고의 장을 써내려가길. ✨" },
+            { es: "Recuerda que tu única competencia eres tú misma. Supérate cada día un poco más. 💪", ko: "너의 유일한 경쟁자는 너 자신이라는 걸 기억해. 매일 조금씩 더 발전하길. 💪" },
+            { es: "Que la felicidad te acompañe en cada paso que des en este nuevo año de vida. 🎂", ko: "새로운 한 해 동안 네가 걷는 모든 걸음에 행복이 함께하기를. 🎂" },
+            { es: "Eres una persona llena de luz, nunca dejes que nadie apague ese brillo que te hace única. 💫", ko: "너는 빛으로 가득 찬 사람이야. 널 특별하게 만드는 그 빛을 누구도 끄지 못하게 해. 💫" },
+            { es: "Los pequeños pasos también te acercan a tu meta. Sigue avanzando sin detenerte. 🚶‍♀️", ko: "작은 발걸음도 너를 목표에 가까워지게 해. 멈추지 말고 계속 나아가. 🚶‍♀️" },
+            { es: "No importa qué tan difícil parezca el camino, dentro de ti tienes la fuerza para superarlo todo. 💜", ko: "길이 아무리 험난해 보여도, 네 안에는 모든 걸 이겨낼 힘이 있어. 💜" },
+            { es: "Celebra tus logros, por más pequeños que parezcan, porque todos son tuyos. 🎉", ko: "아무리 작아 보여도 너의 성취를 축하해. 그 모든 게 너의 것이니까. 🎉" },
+            { es: "Que la vida te sorprenda con momentos inolvidables y risas que te llenen el alma. 🥰", ko: "인생이 잊을 수 없는 순간들과 영혼을 채우는 웃음으로 널 놀라게 하기를. 🥰" },
+            { es: "La magia sucede cuando no te rindes, incluso si a veces las cosas no salen como planeas. ✨", ko: "계획대로 되지 않을 때조차 포기하지 않으면 마법이 일어나. ✨" },
+            { es: "Eres una estrella en constante crecimiento. Que hoy y siempre brilles con fuerza. 🌟", ko: "너는 끊임없이 성장하는 별이야. 오늘 그리고 항상 밝게 빛나기를. 🌟" },
+            { es: "Rodéate de personas que te sumen y te hagan sentir la gran persona que eres. 🎶", ko: "너에게 힘이 되고 네가 얼마나 대단한 사람인지 느끼게 해주는 사람들과 함께해. 🎶" },
+            { es: "Que nunca te falten motivos para sonreír, soñar y seguir luchando por lo que amas. 💜", ko: "웃고, 꿈꾸고, 사랑하는 것을 위해 계속 싸울 이유가 결코 부족하지 않기를. 💜" },
+            { es: "Hoy es tu día. Disfrútalo, ríe a carcajadas y guarda estos momentos en tu corazón. 🎈", ko: "오늘은 너의 날이야. 마음껏 즐기고, 크게 웃고, 이 순간들을 가슴에 간직해. 🎈" },
+            { es: "El mundo es mucho mejor porque tú estás en él. Gracias por ser como eres. 🌎", ko: "네가 있어서 세상이 훨씬 더 좋아졌어. 너다운 모습 그대로 있어줘서 고마워. 🌎" },
+            { es: "Confía en tu intuición y en tu corazón, ellos conocen el camino hacia tu felicidad. 🧭", ko: "너의 직감과 마음을 믿어, 그것들이 너의 행복으로 가는 길을 알고 있으니까. 🧭" },
+            { es: "Que este cumpleaños sea el inicio de tu mejor año hasta ahora. ¡Te lo mereces! 🎁", ko: "이번 생일이 지금까지 중 최고의 해의 시작이 되기를. 넌 그럴 자격이 있어! 🎁" },
+            { es: "Las grandes cosas toman tiempo, ten paciencia y confía en tu proceso. ⏳", ko: "위대한 일에는 시간이 걸려. 인내심을 갖고 너의 과정을 믿어. ⏳" },
+            { es: "Cada error es solo una lección disfrazada. Sigue aprendiendo y creciendo siempre. 📚", ko: "모든 실수는 위장된 교훈일 뿐이야. 항상 배우고 성장하길. 📚" },
+            { es: "Que el amor, la salud y la paz sean tus compañeros constantes en esta vida. 🕊️", ko: "사랑, 건강, 평화가 이 삶에서 너의 끊임없는 동반자가 되기를. 🕊️" },
+            { es: "Nunca olvides lo mucho que vales. Eres un tesoro invaluable para quienes te quieren. 💎", ko: "네가 얼마나 가치 있는 사람인지 절대 잊지 마. 널 사랑하는 사람들에게 넌 값을 매길 수 없는 보물이야. 💎" },
+            { es: "Atrévete a hacer eso que tanto deseas, el momento perfecto para empezar es ahora. 🚀", ko: "네가 간절히 원하는 것을 과감하게 해봐. 시작하기에 완벽한 순간은 바로 지금이야. 🚀" },
+            { es: "Respira profundo, sonríe y abraza todo lo bonito que la vida tiene preparado para ti hoy. 💜", ko: "심호흡을 하고, 미소 지으며, 오늘 삶이 널 위해 준비한 모든 아름다운 것들을 안아봐. 💜" }
+        ];
+
+        const miembrosBTS = ["RM", "Jin", "SUGA", "j-hope", "Jimin", "V", "Jungkook"];
+
+        window.onload = function () {
+            const gridContainer = document.getElementById('grid-mensajes');
+            mensajes.forEach((mensaje, index) => {
+                // Seleccionar al autor basado en el índice
+                const autorBTS = miembrosBTS[index % miembrosBTS.length];
+
+                // Crear el contenedor de la tarjeta
+                const card = document.createElement('div');
+                card.className = 'mensaje-card';
+
+                // Texto en español
+                const textoEs = document.createElement('div');
+                textoEs.className = 'texto-espanol';
+                textoEs.innerText = mensaje.es;
+
+                // Texto en coreano
+                const textoKo = document.createElement('div');
+                textoKo.className = 'texto-coreano';
+                textoKo.innerText = mensaje.ko;
+
+                // Autor (Miembro de BTS)
+                const textoAutor = document.createElement('div');
+                textoAutor.className = 'texto-autor';
+                textoAutor.innerText = `- De: ${autorBTS} 💜`;
+
+                // Añadir los textos a la tarjeta
+                card.appendChild(textoEs);
+                card.appendChild(textoKo);
+                card.appendChild(textoAutor);
+
+                // Añadir la tarjeta a la cuadrícula
+                gridContainer.appendChild(card);
+            });
+
+            // Intentar reproducir la música forzadamente para lidiar con políticas de navegadores
+            const bgMusic = document.getElementById('bg-music');
+            if (bgMusic) {
+                bgMusic.play().catch(function (error) {
+                    console.log("El autoplay con sonido fue bloqueado por el navegador.");
+                });
+            }
+        };
+    </script>
+</body>
+
+</html>
